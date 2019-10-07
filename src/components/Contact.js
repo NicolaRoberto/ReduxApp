@@ -10,31 +10,30 @@ class Contact extends Component {
     return (
       <form>
           <h1>Contact Us</h1>
-          <h5>Leave us a message!</h5>
+          <p>Leave us a message!</p>
           <br />
-        <InputGroup className="col-6 mb-2">
-          <InputGroup.Prepend>
-            <InputGroup.Text id="basic-addon1">Example</InputGroup.Text>
-          </InputGroup.Prepend>
+        <InputGroup className="col-3 mb-2">
           <FormControl
-            placeholder="Username"
-            aria-label="Username"
+            placeholder="Nome"
+            aria-label="Nome"
             aria-describedby="basic-addon1"
           />
         </InputGroup>
 
-        <InputGroup className="col-sm-6 mb-2">
-        <InputGroup.Prepend>
-            <InputGroup.Text id="basic-addon2">Example</InputGroup.Text>
-          </InputGroup.Prepend>
+        <InputGroup className="col-3 mb-2">
           <FormControl
-            placeholder="Email"
-            aria-label="Email"
+            placeholder="Cognome"
+            aria-label="Cognome"
+            aria-describedby="basic-addon1"
+          />
+        </InputGroup>
+
+        <InputGroup className="col-sm-3 mb-2">
+          <FormControl
+            placeholder="Età"
+            aria-label="Età"
             aria-describedby="basic-addon2"
           />
-          <InputGroup.Append>
-            <InputGroup.Text id="basic-addon2">@gmail.com</InputGroup.Text>
-          </InputGroup.Append>
         </InputGroup>
 
         <Button className="col-sm-3" onClick={this.onSubmit}>Submit</Button>

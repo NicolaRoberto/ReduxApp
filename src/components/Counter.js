@@ -7,8 +7,6 @@ const Counter = props => (
   <div>
     <h1>Counter</h1>
 
-    <p>Esempio di un componente React.</p>
-
     <p>Counter attuale: <strong>{props.count}</strong></p>
 
         <button className="btn btn-primary btn-sm" onClick={props.incremento}>Incrementa</button>

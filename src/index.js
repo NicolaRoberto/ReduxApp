@@ -15,6 +15,7 @@ import Users from "./components/Users";
 import Contact from "./components/Contact";
 import NotFound from "./components/NotFound";
 import Counter from "./components/Counter";
+import AddUser from "./components/AddUser";
 
 import { Nav } from "react-bootstrap";
 
@@ -51,6 +52,8 @@ const routing = (
         <Route exact path="/" component={App} />
         <Route exact path="/users" component={Users} />
         <Route exact path="/users/:id" component={Users} />
+        <Route exact path="/userList" component={Users} />
+        <Route exact path="/addUser" component={AddUser} />
         <Route exact path="/counter" component={Counter} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
