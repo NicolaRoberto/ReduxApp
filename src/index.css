@@ -1,0 +1,16 @@
+body 
+{
+  margin: 0;
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+code 
+{
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.active
+{
+  color:red;
+}
