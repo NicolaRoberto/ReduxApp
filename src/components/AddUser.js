@@ -1,37 +1,52 @@
 import React, { Component } from "react";
-import { Button, FormControl } from "react-bootstrap";
-import { addUser, removeUser } from "../actions/Users";
+import { Button, Form, Row } from "react-bootstrap";
 import { connect } from "react-redux";
+import { addUser, removeUser } from '../actions/actions';
 
 class AddUser extends Component {
+  constructor(props){
+    super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   state = {
     users: []
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
-
-    let newUser = {
-      id: 3,
-      cognome: "",
-      nome: ""
-    };
-
-    addUser(newUser);
+    this.props.history.push("/users")
   };
-
 
   render() {
     return (
       <div>
         <h1>Aggiungi Utente</h1>
-        <p>Inserisci i dati all'interno del form</p>
+        <p>Inserisci i dati dell'utente</p>
         <br />
-        <FormControl placeholder="Nome" />
-        <FormControl placeholder="Cognome" />
-        <FormControl placeholder="Età" />
-        <br />
-        <Button className="col-sm-6" onClick={this.handleSubmit}>Aggiungi</Button>
+
+        <Form className="col-sm-12">
+        <Form.Group as={Row} controlId="formSurname">
+              <Form.Control className="col-sm-4" type="text" placeholder="Cognome" />
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="formName">
+              <Form.Control className="col-sm-4" type="text" placeholder="Nome" />
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="formEmail">
+              <Form.Control className="col-sm-4" type="email" placeholder="Email" />
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="formPassword">
+              <Form.Control className="col-sm-4" type="password" placeholder="Password" />
+          </Form.Group>
+
+          <Form.Group as={Row}> 
+            <Button className="col-sm-4" type="submit" onClick={this.handleSubmit}>Aggiungi</Button>
+          </Form.Group>
+        </Form>
       </div>
     );
   }

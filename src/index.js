@@ -11,11 +11,12 @@ import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 import configureStore from './store/configureStore';
 
-import Users from "./components/Users";
-import Contact from "./components/Contact";
 import NotFound from "./components/NotFound";
 import Counter from "./components/Counter";
+import Users from "./components/Users";
 import AddUser from "./components/AddUser";
+import UserDetail from "./components/UserDetail";
+import Login from "./components/Login";
 
 import { Nav } from "react-bootstrap";
 
@@ -27,35 +28,37 @@ const history = createBrowserHistory({ basename: baseUrl });
 const initialState = window.initialReduxState;
 const store = configureStore(history, initialState);
 
-//const store = createStore(rootReducers);
-
 const routing = (
   <Router>
       <Nav>
         <Nav.Item>
-          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link className="py-2 mx-10" href="/home">Home</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/counter">Counter</Nav.Link>
+          <Nav.Link className="py-2 mx-10" href="/counter">Counter</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/users">Users</Nav.Link>
+          <Nav.Link className="py-2 mx-10" href="/addUser">Aggiungi Utente</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/contact">Contact</Nav.Link>
+          <Nav.Link className="py-2 mx-10" href="/users">Lista Utenti</Nav.Link>
         </Nav.Item>
+        {/* <Nav.Item>
+          <Nav.Link className="py-2 mx-10" href="/login">Login</Nav.Link>
+        </Nav.Item> */}
       </Nav>
 
       <hr />
 
       <Switch>
-        <Route exact path="/" component={App} />
+        <Route exact path="/" component={Login} />
+        <Route exact path="/home" component={App} />
         <Route exact path="/users" component={Users} />
-        <Route exact path="/users/:id" component={Users} />
+        <Route exact path="/userDetails/:id" component={UserDetail} />
         <Route exact path="/userList" component={Users} />
         <Route exact path="/addUser" component={AddUser} />
         <Route exact path="/counter" component={Counter} />
-        <Route path="/contact" component={Contact} />
+        <Route exact path="/login" component={Login} />
         <Route component={NotFound} />
       </Switch>
   </Router>

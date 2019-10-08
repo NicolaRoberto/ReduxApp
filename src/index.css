@@ -1,16 +1,26 @@
-body 
-{
+body {
   margin: 0;
   padding: 2rem;
   font-family: sans-serif;
 }
 
-code 
-{
+code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.active
-{
-  color:red;
+.active {
+  color: red;
+}
+
+.nav {
+  background-color: azure;
+  padding-bottom: 0px;
+}
+
+.login {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 50px;
 }

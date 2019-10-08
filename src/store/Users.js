@@ -1,7 +1,7 @@
 const addUser = 'ADD_USER';
 const removeUser = 'REMOVE_USER';
 
-const initialState = { count: 0 };
+const initialState = { users: [] };
 
 export const actionCreators = {
     addUser: () => ({ type: addUser }),

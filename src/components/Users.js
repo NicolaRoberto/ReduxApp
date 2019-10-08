@@ -1,75 +1,60 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
-import AddUser from "./AddUser";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actionCreators } from "../store/Users";
 
-const User = state => <p>{console.log("match.params", state)}</p>;
-
 class Users extends Component {
   state = {
     users: [
-      { id: 1, nome: "Nicola", cognome: "Castello", age: 31 },
-      { id: 2, nome: "Gabriele", cognome: "Consoli", age: 32 }
+      {
+        id: 1,
+        nome: "Nicola",
+        cognome: "Castello",
+        email: "nicola@email.com",
+        password: "pass1"
+      },
+      {
+        id: 2,
+        nome: "Gabriele",
+        cognome: "Consoli",
+        email: "gabriele@email.com",
+        password: "pass2"
+      }
     ]
   };
 
-  addUser = user => {
-    user = {
-      id: this.state.users.length + 1,
-      nome: "Roberto",
-      cognome: "Castello",
-      eta: 31
-    };
-
-    let users = [...this.state.users, user];
-
-    this.setState({
-      users: users
-    });
-  };
-
-  deleteUser = id => {
-    let users = this.state.users.filter(user => {
-      return user.id !== id;
-    });
-
-    this.setState({
-      users: users
-    });
-  };
+  showDetails = () => {
+    console.log("this.props: ", this.props);
+    this.props.history.push(`/userDetails/${1}`);
+  }
 
   render() {
     return (
       <Row>
-        <Col sm={6}>
-          <AddUser />
-        </Col>
-        <Col sm={6}>
+        <Col sm={12}>
           <h1>Lista Utenti</h1>
 
           <p>Seleziona un utente per visualizzare il dettaglio</p>
 
           <br />
-          <ul>
-            {this.state.users.map(user => {
-              return (
-                <li>
-                  <Link to="/users/1">
-                    {user.nome + " " + user.cognome + " - Età: " + user.age}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-
-          <br />
-
-          <Route path="/users/:id" component={User} />
-          <Route path="/addUser" component={AddUser} />
+          {this.state.users.map(user => {
+            return (
+              <Row className="mb-3 table-bordered col-sm-6">
+                <div className="col-sm-10">
+                  {user.nome + " " + user.cognome}
+                  <br />
+                  {"Email: " + user.email}
+                </div>
+                <div className="col-sm-2">
+                  <Button className="btn btn-sm" onClick={this.showDetails}>
+                    Dettagli
+                  </Button>
+                </div>
+              </Row>
+            );
+          })}
         </Col>
       </Row>
     );
